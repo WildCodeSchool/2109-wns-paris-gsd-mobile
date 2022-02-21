@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     width: 300,
     justifyContent: "space-between",
     position: "absolute",
-    bottom: 100,
+    bottom: 40,
   },
   iconStar: {
     ...iconStar,
