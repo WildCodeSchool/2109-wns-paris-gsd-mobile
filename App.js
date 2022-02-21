@@ -17,7 +17,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Task"
+          name="Tasks"
           component={TaskScreen}
           // options={{headerShown: false}}
         />
