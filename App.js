@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen";
 import TaskScreen from "./screens/TaskScreen";
+import NotificationsScreen from "./screens/NotificationsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +22,8 @@ export default function App() {
             iconName = focused ? 'log-in' : 'log-in-outline';
           } else if (route.name === 'Tasks') {
             iconName = focused ? 'tasks' : 'tasks-outline';
+          } else if (route.name === 'Notifications') {
+            iconName = focused ? 'notifications' : 'notifications-outline';
           } 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -36,6 +39,11 @@ export default function App() {
         <Tab.Screen
           name="Task"
           component={TaskScreen}
+          // options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Notifications"
+          component={NotificationsScreen}
           // options={{headerShown: false}}
         />
       </Tab.Navigator>
