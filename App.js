@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen";
-import TaskScreen from "./screens/TaskScreen";
+import TasksScreen from "./screens/TasksScreen";
 import NotificationsScreen from "./screens/NotificationsScreen";
 
 const Tab = createBottomTabNavigator();
@@ -21,13 +21,13 @@ export default function App() {
           if (route.name === 'Login') {
             iconName = focused ? 'log-in' : 'log-in-outline';
           } else if (route.name === 'Tasks') {
-            iconName = focused ? 'enter' : 'enter-outline';
+            iconName = focused ? 'file-tray-full' : 'file-tray-full-outline';
           } else if (route.name === 'Notifications') {
             iconName = focused ? 'notifications' : 'notifications-outline';
           } 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "pink",
+        tabBarActiveTintColor: "#FF00FF",
         tabBarInactiveTintColor: "gray",
       })}
         >
@@ -37,8 +37,8 @@ export default function App() {
           // options={{ headerShown: false }}
         />
         <Tab.Screen
-          name="Task"
-          component={TaskScreen}
+          name="Tasks"
+          component={TasksScreen}
           // options={{headerShown: false}}
         />
         <Tab.Screen

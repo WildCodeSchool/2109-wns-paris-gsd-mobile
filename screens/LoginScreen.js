@@ -36,7 +36,7 @@ export default function LoginScreen({ navigation }) {
       </View>
       <TouchableOpacity
         style={styles.loginBtn}
-        onPress={() => navigation.navigate("Task")}
+        onPress={() => navigation.navigate("Tasks")}
       >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
@@ -67,14 +67,11 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     width: 250,
-    // borderRadius: 20,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#ef89c2",
-  },
-  loginText: {
-    color: "white",
+    borderColor: "black",
+    borderWidth: 1,
   },
 });
