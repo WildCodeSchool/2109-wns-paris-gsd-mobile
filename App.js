@@ -20,7 +20,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="One"
+          name="Task Details"
           component={TaskDetailsScreen}
           options={{ headerShown: false }}
         />
