@@ -17,10 +17,10 @@ export default function App() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           
-          if (route.Name === 'Login') {
-            iconName = focused ? 'log-in' : 'log-in-outline';
+          if (route.name === 'Login') {
+            iconName = focused ? 'enter' : 'enter-outline';
           } else if (route.name === 'Tasks') {
-            iconName = focused ? 'tasks' : 'tasks-outline';
+            iconName = focused ? 'file-tray-full' : 'file-tray-full-outline';
           } 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -34,7 +34,7 @@ export default function App() {
           // options={{ headerShown: false }}
         />
         <Tab.Screen
-          name="Task"
+          name="Tasks"
           component={TaskScreen}
           // options={{headerShown: false}}
         />
