@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen";
-import TaskScreen from "./screens/TaskScreen";
+import TasksScreen from "./screens/TasksScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +35,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Tasks"
-          component={TaskScreen}
+          component={TasksScreen}
           // options={{headerShown: false}}
         />
       </Tab.Navigator>
