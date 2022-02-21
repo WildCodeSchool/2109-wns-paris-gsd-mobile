@@ -18,10 +18,10 @@ export default function App() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           
-          if (route.Name === 'Login') {
+          if (route.name === 'Login') {
             iconName = focused ? 'log-in' : 'log-in-outline';
           } else if (route.name === 'Tasks') {
-            iconName = focused ? 'tasks' : 'tasks-outline';
+            iconName = focused ? 'enter' : 'enter-outline';
           } else if (route.name === 'Notifications') {
             iconName = focused ? 'notifications' : 'notifications-outline';
           } 
