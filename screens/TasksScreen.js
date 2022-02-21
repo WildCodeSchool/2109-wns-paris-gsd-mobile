@@ -43,6 +43,7 @@ const tasks = [
 const Item = ({ project, titleTask, author, status }) => (
   <View style={card.container}>
     <View style={card.card}>
+      
       <Text style={card.project}>{project}</Text>
       <View style={card.titleBox}>
         {status === " pending" ? (
