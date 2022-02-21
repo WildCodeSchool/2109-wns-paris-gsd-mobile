@@ -8,6 +8,7 @@ import {
   FlatList,
   SafeAreaView,
   SectionList,
+  TouchableOpacity
 } from "react-native";
 import { textDecorationColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 // import {tasks} from "../data/tasks";
@@ -40,25 +41,18 @@ const tasks = [
   },
 ];
 
-const Item = ({ project, titleTask, author, status }) => (
+const Item = ({ project, titleTask, author, status, navigation }) => (
   <View style={card.container}>
     <View style={card.card}>
-      
-      <Text style={card.project}>{project}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("One")}>
+        <Text style={card.project}>{project}</Text>
+      </TouchableOpacity>
       <View style={card.titleBox}>
         {status === " pending" ? (
-          // <Image
-          //   style={{ width: 30, height: 30 }}
-          //   source={require("../assets/star_yellow.png")}
-          // />
           <Text>test</Text>
         ) : (
           <>
             <Text>{status}</Text>
-            {/* <Image
-                style={{ width: 30, height: 30 }}
-               source={require("../assets/star_yellow.png")}
-              /> */}
           </>
         )}
         <Text style={card.title}>{titleTask}</Text>
@@ -69,18 +63,19 @@ const Item = ({ project, titleTask, author, status }) => (
     </View>
   </View>
 );
-export default function Task({navigation}) {
+export default function Task({ navigation }) {
   const renderItem = ({ item }) => (
     <Item
       project={item.project}
       titleTask={item.titleTask}
       author={item.author}
       status={item.status}
+      navigation={navigation}
     />
   );
   return (
     <SafeAreaView>
-      <Logo onPress={() => navigation.navigate("Login")}/>
+      <Logo onPress={() => navigation.navigate("Login")} />
       <FlatList
         data={tasks}
         renderItem={renderItem}
