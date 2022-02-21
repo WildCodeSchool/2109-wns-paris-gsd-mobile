@@ -7,7 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-
+import LoginIcons from '../composants/LoginIcons'
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState();
   return (
@@ -19,30 +19,22 @@ export default function LoginScreen({ navigation }) {
         />
       </View>
       <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="email@company.com"
-          //   placeholderTextColor="#"
-          //   onChangeText={(email) => setEmail(email)}
-        />
+        <TextInput style={styles.TextInput} placeholder="email@company.com" />
       </View>
       <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="password"
-          //   placeholderTextColor="#"
-          //   onChangeText={(email) => setEmail(email)}
-        />
+        <TextInput style={styles.TextInput} placeholder="password" />
       </View>
       <TouchableOpacity
         style={styles.loginBtn}
-        onPress={() => navigation.navigate("Task")}
+        onPress={() => navigation.navigate("Tasks")}
       >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
+      <LoginIcons/>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -67,14 +59,11 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     width: 250,
-    // borderRadius: 20,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#ef89c2",
-  },
-  loginText: {
-    color: "white",
+    borderColor: "black",
+    borderWidth: 1,
   },
 });
