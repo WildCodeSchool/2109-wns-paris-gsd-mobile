@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: 300,
     justifyContent: "space-between",
-    position: "absolute",
-    bottom: 40,
+    marginTop: 20,  
   },
   iconStar: {
     ...iconStar,
