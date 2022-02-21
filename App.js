@@ -33,7 +33,7 @@ export default function App() {
           component={LoginScreen}
           // options={{ headerShown: false }}
         />
-        <Stack.Screen
+        <Tab.Screen
           name="Tasks"
           component={TasksScreen}
           options={{headerShown: false}}
