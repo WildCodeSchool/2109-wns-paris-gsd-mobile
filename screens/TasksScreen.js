@@ -8,7 +8,8 @@ import {
   FlatList,
   SafeAreaView,
   SectionList,
-  TouchableOpacity
+  ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { textDecorationColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 // import {tasks} from "../data/tasks";
@@ -27,14 +28,28 @@ const tasks = [
   },
   {
     id: 2,
-    project: "Project 1",
+    project: "Project 2",
     titleTask: "Refaire le front-end",
     author: "Patrik",
     status: "done",
   },
   {
     id: 3,
-    project: "Project 2",
+    project: "Project 3",
+    titleTask: "Cleaner les logos",
+    author: "Sponge Bob",
+    status: "pending",
+  },
+  {
+    id: 4,
+    project: "Project 4",
+    titleTask: "Cleaner les logos",
+    author: "Sponge Bob",
+    status: "pending",
+  },
+  {
+    id: 5,
+    project: "Project 5",
     titleTask: "Cleaner les logos",
     author: "Sponge Bob",
     status: "pending",
@@ -42,9 +57,9 @@ const tasks = [
 ];
 
 const Item = ({ project, titleTask, author, status, navigation }) => (
-  <View style={card.container}>
-    <View style={card.card}>
-      <TouchableOpacity onPress={() => navigation.navigate("One")}>
+  <SafeAreaView style={card.container}>
+    <ScrollView style={card.card}>
+      <TouchableOpacity onPress={() => navigation.navigate("Task Details")}>
         <Text style={card.project}>{project}</Text>
       </TouchableOpacity>
       <View style={card.titleBox}>
@@ -60,8 +75,8 @@ const Item = ({ project, titleTask, author, status, navigation }) => (
       <View style={card.authorBox}>
         <Text style={card.author}>{author}</Text>
       </View>
-    </View>
-  </View>
+    </ScrollView>
+  </SafeAreaView>
 );
 export default function Task({ navigation }) {
   const renderItem = ({ item }) => (
