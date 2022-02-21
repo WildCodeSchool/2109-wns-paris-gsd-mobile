@@ -7,17 +7,13 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import LoginIcons from '../composants/LoginIcons'
+import LoginIcons from "../composants/LoginIcons";
+import Logo from "../composants/Logo";
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState();
   return (
     <View style={styles.container}>
-      <View style={styles.imgContainer}>
-        <Image
-          style={{ width: 300, height: 70 }}
-          source={require("../assets/logo.png")}
-        />
-      </View>
+      <Logo />
       <View style={styles.inputView}>
         <TextInput style={styles.TextInput} placeholder="email@company.com" />
       </View>
@@ -30,7 +26,7 @@ export default function LoginScreen({ navigation }) {
       >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
-      <LoginIcons/>
+      <LoginIcons />
     </View>
   );
 }
