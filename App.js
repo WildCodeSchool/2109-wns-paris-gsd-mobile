@@ -34,17 +34,17 @@ export default function App() {
         <Tab.Screen
           name="Login"
           component={LoginScreen}
-          // options={{ headerShown: false }}
+          options={{ headerShown: false }}
         />
         <Tab.Screen
           name="Tasks"
           component={TasksScreen}
-          // options={{headerShown: false}}
+          options={{headerShown: false}}
         />
         <Tab.Screen
           name="Notifications"
           component={NotificationsScreen}
-          // options={{headerShown: false}}
+          options={{headerShown: false}}
         />
       </Tab.Navigator>
     </NavigationContainer>
