@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { textDecorationColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 // import {tasks} from "../data/tasks";
+import Logo from "../composants/Logo";
 
 const tasks = [
   {
@@ -19,6 +20,9 @@ const tasks = [
     titleTask: "Cleaner les logos",
     author: "Sponge Bob",
     status: "pending",
+    icon: {
+      uri: "../assets/star_yellow.png",
+    },
   },
   {
     id: 2,
@@ -41,21 +45,21 @@ const Item = ({ project, titleTask, author, status }) => (
     <View style={card.card}>
       <Text style={card.project}>{project}</Text>
       <View style={card.titleBox}>
-        <Image
-          style={{ width: 30, height: 30 }}
-          source={require("../assets/star_yellow.png")}
-        />
-        {/* {status === " pending" ? (
-          <Image
-            style={{ width: 30, height: 30 }}
-            source={require("../assets/star_yellow.png")}
-          />
+        {status === " pending" ? (
+          // <Image
+          //   style={{ width: 30, height: 30 }}
+          //   source={require("../assets/star_yellow.png")}
+          // />
+          <Text>test</Text>
         ) : (
-          <Image
-            style={{ width: 30, height: 30 }}
-            source={require("../assets/star_pink.png")}
-          />
-        )} */}
+          <>
+            <Text>{status}</Text>
+            {/* <Image
+                style={{ width: 30, height: 30 }}
+               source={require("../assets/star_yellow.png")}
+              /> */}
+          </>
+        )}
         <Text style={card.title}>{titleTask}</Text>
       </View>
       <View style={card.authorBox}>
@@ -64,7 +68,7 @@ const Item = ({ project, titleTask, author, status }) => (
     </View>
   </View>
 );
-export default function Task() {
+export default function Task({navigation}) {
   const renderItem = ({ item }) => (
     <Item
       project={item.project}
@@ -75,6 +79,7 @@ export default function Task() {
   );
   return (
     <SafeAreaView>
+      <Logo onPress={() => navigation.navigate("Login")}/>
       <FlatList
         data={tasks}
         renderItem={renderItem}
