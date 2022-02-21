@@ -5,18 +5,18 @@ import {
   View,
   Icon,
   Image,
+  StatusBar,
   TextInput,
   TouchableOpacity,
 } from "react-native";
-// import Ionicons from "@expo/vector-icons/Ionicons";
-export default function TaskDetailsScreen() {
+import Logo from "../composants/Logo";
+
+import TaskNavigation from "../composants/task/TaskNavigation";
+export default function TaskDetailsScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View >
-        {/* <Ionicons name={"notifications"} size={25} /> */}
-        <Text>Project</Text>
-      </View>
-      <Text>one task</Text>
+      <Logo></Logo>
+      <TaskNavigation navigation={navigation} />
     </View>
   );
 }
@@ -24,9 +24,7 @@ export default function TaskDetailsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "black",
-    borderWidth: 1,
+    paddingTop: StatusBar.currentHeight,
+    marginVertical: 40,
   },
 });
