@@ -7,7 +7,9 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import LoginIcons from '../composants/LoginIcons'
+
+import { containerFlexCenter, inputView } from "../style/common.style";
+import LoginIcons from "../composants/LoginIcons";
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState();
   return (
@@ -19,10 +21,10 @@ export default function LoginScreen({ navigation }) {
         />
       </View>
       <View style={styles.inputView}>
-        <TextInput style={styles.TextInput} placeholder="email@company.com" />
+        <TextInput style={styles.textInput} placeholder="email@company.com" />
       </View>
       <View style={styles.inputView}>
-        <TextInput style={styles.TextInput} placeholder="password" />
+        <TextInput style={styles.textInput} placeholder="password" />
       </View>
       <TouchableOpacity
         style={styles.loginBtn}
@@ -30,40 +32,24 @@ export default function LoginScreen({ navigation }) {
       >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
-      <LoginIcons/>
+      <LoginIcons />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    ...containerFlexCenter,
   },
   imgContainer: {
     marginBottom: 40,
   },
   inputView: {
-    width: 250,
-    borderColor: "black",
-    borderWidth: 1,
+    ...inputView,
     height: 45,
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  TextInput: {
-    flex: 1,
-    padding: 10,
   },
   loginBtn: {
-    width: 250,
+    ...inputView,
     height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 40,
-    borderColor: "black",
-    borderWidth: 1,
   },
 });

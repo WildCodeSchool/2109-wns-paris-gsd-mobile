@@ -1,41 +1,36 @@
 import React from "react";
-import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
+import { containerFlexRow, marginAuto, iconStar } from "../style/common.style";
+
 export default function LoginIcons() {
   return (
-    <View style={styles.iconsContainer}>
+    <View style={styles.container}>
       <Image
-        style={styles.iconStar}
+        style={styles.icon}
         source={require("../assets/star_yellow.png")}
       />
       <Image
-        style={styles.iconStarCenter}
+        style={styles.iconCenter}
         source={require("../assets/star_red.png")}
       />
-      <Image
-        style={styles.iconStar}
-        source={require("../assets/star_pink.png")}
-      />
+      <Image style={styles.icon} source={require("../assets/star_pink.png")} />
     </View>
   );
 }
-const iconStar = {
-  width: 30,
-  height: 30,
-};
+
 const styles = StyleSheet.create({
-  iconsContainer: {
-    display: "flex",
-    flexDirection: "row",
+  container: {
+    ...containerFlexRow,
     width: 300,
-    justifyContent: "space-between",
     position: "absolute",
-    bottom: 100,
+    bottom: 90,
+    ...marginAuto,
   },
-  iconStar: {
+  icon: {
     ...iconStar,
     marginTop: 40,
   },
-  iconStarCenter: {
+  iconCenter: {
     ...iconStar,
   },
 });
