@@ -57,11 +57,19 @@ export const textUppercase = {
   textShadowColor: "black",
   textShadowRadius: -1,
   textShadowOffset: { width: -1, height: 2 },
-  textAlign: 'center',
+  textAlign: "center",
   fontFamily: theme.FONT_FAMILY,
   fontSize: theme.FONT_SIZE_M,
 };
 export const textDescription = {
-    textAlign: 'center',
-    fontSize: theme.FONT_SIZE_XS,
-}
+  textAlign: "center",
+  fontSize: theme.FONT_SIZE_XS,
+};
+export const marginAuto = {
+  marginRight: "auto",
+  marginLeft: "auto",
+};
+export const iconStar = {
+  width: 30,
+  height: 30,
+};
