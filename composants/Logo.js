@@ -1,8 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { containerLogo } from "../style/common.style";
+
 export default function Logo({ onPress }) {
   return (
-    <View style={styles.imgContainer}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <Image
           style={{ width: 300, height: 70 }}
@@ -14,9 +16,7 @@ export default function Logo({ onPress }) {
 }
 
 const styles = StyleSheet.create({
-  imgContainer: {
-    marginBottom: 40,
-    alignItems: "center",
-    justifyContent: "center",
+  container: {
+    ...containerLogo,
   },
 });
