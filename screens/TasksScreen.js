@@ -3,23 +3,27 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  StatusBar,
   FlatList,
   SafeAreaView,
-  SectionList,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { textDecorationColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
-// import {tasks} from "../data/tasks";
+import {
+  container,
+  card,
+  containerFlexRow,
+  textUppercase,
+  textDescription,
+} from "../style/common.style";
 import Logo from "../composants/Logo";
+import TasksDetailsBox from "../composants/tasks/TasksDetailsBox";
+import theme from "../style/theme.style";
 
 const tasks = [
   {
     id: 1,
     project: "Project 1",
-    titleTask: "Cleaner les logos",
+    taskTitle: "Cleaner les logos",
     author: "Sponge Bob",
     status: "pending",
     icon: {
@@ -29,67 +33,65 @@ const tasks = [
   {
     id: 2,
     project: "Project 2",
-    titleTask: "Refaire le front-end",
+    taskTitle: "Refaire le front-end",
     author: "Patrik",
     status: "done",
   },
   {
     id: 3,
     project: "Project 3",
-    titleTask: "Cleaner les logos",
+    taskTitle: "Cleaner les logos",
     author: "Sponge Bob",
     status: "pending",
   },
   {
     id: 4,
     project: "Project 4",
-    titleTask: "Cleaner les logos",
+    taskTitle: "Cleaner les logos",
     author: "Sponge Bob",
     status: "pending",
   },
   {
     id: 5,
     project: "Project 5",
-    titleTask: "Cleaner les logos",
+    taskTitle: "Cleaner les logos",
     author: "Sponge Bob",
     status: "pending",
   },
 ];
 
-const Item = ({ project, titleTask, author, status, navigation }) => (
-  <SafeAreaView style={card.container}>
-    <ScrollView style={card.card}>
-      <TouchableOpacity onPress={() => navigation.navigate("Task Details")}>
-        <Text style={card.project}>{project}</Text>
-      </TouchableOpacity>
-      <View style={card.titleBox}>
-        {status === " pending" ? (
-          <Text>test</Text>
-        ) : (
-          <>
-            <Text>{status}</Text>
-          </>
-        )}
-        <Text style={card.title}>{titleTask}</Text>
+const Item = ({ project, taskTitle, author, status, navigation }) => (
+  <ScrollView style={styles.card}>
+    <TouchableOpacity onPress={() => navigation.navigate("Task Details")}>
+      <TasksDetailsBox
+        project={project}
+        taskTitle={taskTitle}
+        author={author}
+        status={status}
+      ></TasksDetailsBox>
+      <View style={styles.detailsBox}>
+        <View style={styles.boxTitle}>
+          <Text style={(styles.title, styles.progress)}>55%</Text>
+        </View>
+        <View style={styles.boxTitle}>
+          <Text style={(styles.title, styles.date)}>11/11/11</Text>
+        </View>
       </View>
-      <View style={card.authorBox}>
-        <Text style={card.author}>{author}</Text>
-      </View>
-    </ScrollView>
-  </SafeAreaView>
+    </TouchableOpacity>
+  </ScrollView>
 );
-export default function Task({ navigation }) {
+export default function TasksScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <Item
       project={item.project}
-      titleTask={item.titleTask}
+      taskTitle={item.taskTitle}
       author={item.author}
       status={item.status}
       navigation={navigation}
     />
   );
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
       <FlatList
         data={tasks}
@@ -99,66 +101,33 @@ export default function Task({ navigation }) {
     </SafeAreaView>
   );
 }
-const text = {
-  fontWeight: "bold",
-  textTransform: "uppercase",
-  textShadowColor: "black",
-  textShadowRadius: -1,
-  textShadowOffset: { width: -1, height: 2 },
-};
-const box = {
-  width: 300,
-  marginLeft: "auto",
-  marginRight: "auto",
-};
-const card = StyleSheet.create({
-  header: {
-    backgroundColor: "red",
-  },
+
+const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16,
+    ...container,
   },
   card: {
-    borderRadius: 4,
-    borderBottomWidth: 3,
-    borderLeftWidth: 3,
-    borderTopWidth: 1,
-    borderRightWidth: 1,
-    marginVertical: 8,
+    ...card,
   },
-  project: {
-    ...text,
-    backgroundColor: "#EA3358",
-    color: "white",
-    padding: 15,
-    fontSize: 20,
-    borderRadius: 4,
+  detailsBox: {
+    ...containerFlexRow,
   },
-  titleBox: {
-    ...box,
-    display: "flex",
-    flexDirection: "row",
-    marginTop: 20,
+  boxTitle: {
+    padding: 20,
+    width: "50%",
+    borderTopWidth: 2,
+    borderRightWidth: 2,
+    borderColor: "black",
   },
   title: {
-    ...text,
-    fontSize: 25,
-    color: "#F4BF42",
-    paddingLeft: 20,
+    fontSize: theme.FONT_SIZE_M,
   },
-  authorBox: {
-    ...box,
-    flex: 1,
-    justifyContent: "flex-end",
-    marginTop: 15,
-    marginBottom: 5,
+  progress: {
+    color: theme.SIXTH_COLOR,
+    ...textUppercase,
   },
-  author: {
-    ...text,
-    fontSize: 15,
-    color: "#5DCFFA",
-    textAlign: "right",
+  date: {
+    color: theme.FIFTH_COLOR,
+    ...textUppercase,
   },
 });
