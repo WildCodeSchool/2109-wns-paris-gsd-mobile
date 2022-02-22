@@ -4,6 +4,7 @@ export default {
     THIRD_COLOR: '#EF89C3',
     FOURTH_COLOR: '#5DAFFA',
     FIFTH_COLOR: '#21AB38',
+    SIXTH_COLOR: '#4269F4',
     FONT_SIZE_XS: 15,
     FONT_SIZE_S: 20,
     FONT_SIZE_M: 25,
