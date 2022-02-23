@@ -1,30 +1,25 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Icon,
-  Image,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
 import Logo from "../composants/Logo";
-
+import { container } from "../style/common.style";
 import TaskNavigation from "../composants/task/TaskNavigation";
+import TaskDeadline from "../composants/task/TaskDeadline";
 export default function TaskDetailsScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Logo></Logo>
-      <TaskNavigation navigation={navigation} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Logo onPress={() => navigation.navigate("Login")} />
+      <ScrollView style={styles.card}>
+        <TaskNavigation navigation={navigation} />
+        <View style={styles.box}>
+          <TaskDeadline></TaskDeadline>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginVertical: 40,
+    ...container,
   },
 });
