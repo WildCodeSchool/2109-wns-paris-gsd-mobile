@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -18,47 +18,9 @@ import {
 import Logo from "../composants/Logo";
 import TasksDetailsBox from "../composants/tasks/TasksDetailsBox";
 import theme from "../style/theme.style";
+import { useQuery } from "@apollo/client";
+import { GET_TASKS } from "../graphql/Queries";
 
-const tasks = [
-  {
-    id: 1,
-    project: "Project 1",
-    taskTitle: "Cleaner les logos",
-    author: "Sponge Bob",
-    status: "pending",
-    icon: {
-      uri: "../assets/star_yellow.png",
-    },
-  },
-  {
-    id: 2,
-    project: "Project 2",
-    taskTitle: "Refaire le front-end",
-    author: "Patrik",
-    status: "done",
-  },
-  {
-    id: 3,
-    project: "Project 3",
-    taskTitle: "Cleaner les logos",
-    author: "Sponge Bob",
-    status: "pending",
-  },
-  {
-    id: 4,
-    project: "Project 4",
-    taskTitle: "Cleaner les logos",
-    author: "Sponge Bob",
-    status: "pending",
-  },
-  {
-    id: 5,
-    project: "Project 5",
-    taskTitle: "Cleaner les logos",
-    author: "Sponge Bob",
-    status: "pending",
-  },
-];
 
 const Item = ({ project, taskTitle, author, status, navigation }) => (
   <ScrollView style={styles.card}>
@@ -80,16 +42,27 @@ const Item = ({ project, taskTitle, author, status, navigation }) => (
     </TouchableOpacity>
   </ScrollView>
 );
+
 export default function TasksScreen({ navigation }) {
+
+  const [tasks, setTasks] = useState()
+
+  const { data, error } = useQuery(GET_TASKS)
+
+  useEffect(() => {
+    setTasks(data.getTasks)
+  }, [data]);
+
   const renderItem = ({ item }) => (
     <Item
-      project={item.project}
-      taskTitle={item.taskTitle}
-      author={item.author}
+      project={item.project.name}
+      taskTitle={item.title}
+      author={item.taskCreator.username}
       status={item.status}
       navigation={navigation}
     />
   );
+
   return (
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
