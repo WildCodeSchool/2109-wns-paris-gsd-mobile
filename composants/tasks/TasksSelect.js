@@ -9,7 +9,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import SelectDropdown from "react-native-select-dropdown";
 const projects = ["Project 1", "New Project", "Project FB", "Project 3"];
-export default function TasksSelect() {
+export default function TasksSelect({ buttonStyle, defaultButtonText, buttonTextStyle }) {
   return (
     <View style={styles.container}>
       <SelectDropdown
@@ -27,7 +27,7 @@ export default function TasksSelect() {
           // if data array is an array of objects then return item.property to represent item in dropdown
           return item;
         }}
-        defaultButtonText="All Projects"
+        defaultButtonText={defaultButtonText}
         renderDropdownIcon={(isOpened) => {
           return (
             <Ionicons
@@ -37,8 +37,8 @@ export default function TasksSelect() {
             />
           );
         }}
-        buttonStyle={styles.button}
-        buttonTextStyle={styles.text}
+        buttonStyle={buttonStyle}
+        buttonTextStyle={buttonTextStyle}
       />
     </View>
   );

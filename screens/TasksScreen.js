@@ -14,6 +14,8 @@ import {
   containerFlexRow,
   textUppercase,
   textDescription,
+  buttonFilter,
+  textButton,
 } from "../style/common.style";
 import Logo from "../composants/Logo";
 import TasksDetailsBox from "../composants/tasks/TasksDetailsBox";
@@ -96,7 +98,11 @@ export default function TasksScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
-      <TasksSelect/>
+      <TasksSelect
+        buttonStyle={styles.button}
+        buttonTextStyle={styles.text}
+        defaultButtonText="All Projects"
+      />
       <TasksFilterButton />
       <FlatList
         data={tasks}
@@ -134,5 +140,13 @@ const styles = StyleSheet.create({
   date: {
     color: theme.GREEN,
     ...textUppercase,
+  },
+  button: {
+    ...buttonFilter,
+    width: "100%",
+    padding: 10,
+  },
+  text: {
+    ...textButton,
   },
 });
