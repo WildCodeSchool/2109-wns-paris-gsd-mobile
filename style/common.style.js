@@ -73,3 +73,8 @@ export const iconStar = {
   width: 30,
   height: 30,
 };
+export const buttonFilter = {
+  ...card,
+  padding: 15,
+  width: 170,
+}
