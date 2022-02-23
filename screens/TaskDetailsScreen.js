@@ -4,14 +4,21 @@ import Logo from "../composants/Logo";
 import { container } from "../style/common.style";
 import TaskNavigation from "../composants/task/TaskNavigation";
 import TaskDeadline from "../composants/task/TaskDeadline";
+import TaskDescription from "../composants/task/TaskDescription";
+import TaskStatus from "../composants/task/TaskStatus";
 export default function TaskDetailsScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
       <ScrollView style={styles.card}>
         <TaskNavigation navigation={navigation} />
+
         <View style={styles.box}>
-          <TaskDeadline></TaskDeadline>
+          <TaskDescription />
+        </View>
+        <View style={styles.box}>
+          <TaskDeadline />
+          <TaskStatus />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -21,5 +28,8 @@ export default function TaskDetailsScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     ...container,
+  },
+  card: {
+    padding: 20,
   },
 });

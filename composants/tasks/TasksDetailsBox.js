@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import {
   container,
   card,
@@ -57,43 +53,43 @@ export default function TasksDetailsBox({
   );
 }
 const styles = StyleSheet.create({
-    container: {
-      ...container,
-    },
-    card: {
-      ...card,
-    },
-    detailsBox: {
-      ...containerFlexRow,
-    },
-    box: {
-      padding: 22,
-      paddingBottom: 0,
-    },
-    description: {
-      ...textDescription,
-    },
-    boxTitle: {
-      width: "50%",
-      marginBottom: 22,
-    },
-    title: {
-      fontSize: theme.FONT_SIZE_M,
-    },
-    task: {
-      color: theme.YELLOW,
-      ...textUppercase,
-    },
-    project: {
-      color: theme.RED,
-      ...textUppercase,
-    },
-    status: {
-      color: theme.PINK,
-      ...textUppercase,
-    },
-    author: {
-      color: theme.LIGHT_BLUE,
-      ...textUppercase,
-    }
-  });
+  container: {
+    ...container,
+  },
+  card: {
+    ...card,
+  },
+  detailsBox: {
+    ...containerFlexRow,
+  },
+  box: {
+    padding: 22,
+    paddingBottom: 0,
+  },
+  description: {
+    ...textDescription,
+  },
+  boxTitle: {
+    width: "50%",
+    marginBottom: 22,
+  },
+  title: {
+    fontSize: theme.FONT_SIZE_M,
+  },
+  task: {
+    color: theme.YELLOW,
+    ...textUppercase,
+  },
+  project: {
+    color: theme.RED,
+    ...textUppercase,
+  },
+  status: {
+    color: theme.PINK,
+    ...textUppercase,
+  },
+  author: {
+    color: theme.LIGHT_BLUE,
+    ...textUppercase,
+  },
+});
