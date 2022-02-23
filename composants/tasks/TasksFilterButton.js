@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import {
   containerFlexRow,
-  textUppercase,
   buttonFilter,
+  textButton,
 } from "../../style/common.style";
 import theme from "../../style/theme.style";
 
@@ -27,8 +27,6 @@ const styles = StyleSheet.create({
     ...buttonFilter,
   },
   text: {
-    fontSize: theme.FONT_SIZE_S,
-    fontWeight: theme.FONT_WEIGHT_MEDIUM,
-    ...textUppercase,
+    ...textButton,
   },
 });
