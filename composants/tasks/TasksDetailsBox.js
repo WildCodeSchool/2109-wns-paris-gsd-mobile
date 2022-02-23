@@ -81,19 +81,19 @@ const styles = StyleSheet.create({
       fontSize: theme.FONT_SIZE_M,
     },
     task: {
-      color: theme.PRIMARY_COLOR,
+      color: theme.YELLOW,
       ...textUppercase,
     },
     project: {
-      color: theme.SECONDARY_COLOR,
+      color: theme.RED,
       ...textUppercase,
     },
     status: {
-      color: theme.THIRD_COLOR,
+      color: theme.PINK,
       ...textUppercase,
     },
     author: {
-      color: theme.FOURTH_COLOR,
+      color: theme.LIGHT_BLUE,
       ...textUppercase,
     }
   });
