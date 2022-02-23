@@ -33,13 +33,13 @@ export const card = {
 export const headingText = {
   fontSize: theme.FONT_SIZE_M,
   alignSelf: "flex-start",
-  color: theme.FIFTH_COLOR,
+  color: theme.GREEN,
   padding: 10,
   fontWeight: theme.FONT_WEIGHT_BOLD,
 };
 
 export const textInput = {
-  color: theme.FOURTH_COLOR,
+  color: theme.LIGHT_BLUE,
   backgroundColor: theme.BACKGROUND_COLOR_LIGHT,
   //   alignSelf: "stretch",
 };
