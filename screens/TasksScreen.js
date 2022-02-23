@@ -18,6 +18,7 @@ import {
 import Logo from "../composants/Logo";
 import TasksDetailsBox from "../composants/tasks/TasksDetailsBox";
 import TasksFilterButton from "../composants/tasks/TasksFilterButton";
+import TasksSelect from "../composants/tasks/TasksSelect";
 
 import theme from "../style/theme.style";
 
@@ -95,6 +96,7 @@ export default function TasksScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
+      <TasksSelect/>
       <TasksFilterButton />
       <FlatList
         data={tasks}
