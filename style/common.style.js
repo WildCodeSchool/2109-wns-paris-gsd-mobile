@@ -78,3 +78,8 @@ export const buttonFilter = {
   padding: 15,
   width: 170,
 }
+export const textButton = {
+  ...textUppercase,
+  fontSize: theme.FONT_SIZE_S,
+  textShadowColor: 'transparent',
+}
