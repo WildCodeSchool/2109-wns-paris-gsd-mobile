@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { card, textUppercase } from "../../style/common.style";
-import themeStyle from "../../style/theme.style";
+import theme from "../../style/theme.style";
 
 export default function TaskDeadline() {
   return (
@@ -20,7 +20,7 @@ const style = StyleSheet.create({
   },
   title: {
     ...textUppercase,
-    fontSize: themeStyle.FONT_SIZE_M,
-    color: themeStyle.GREEN,
+    fontSize: theme.FONT_SIZE_M,
+    color: theme.GREEN,
   },
 });
