@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import format from 'date-fns/format'
 import {
   StyleSheet,
   Text,
@@ -22,26 +23,31 @@ import { useQuery } from "@apollo/client";
 import { GET_TASKS } from "../graphql/Queries";
 
 
-const Item = ({ project, taskTitle, author, status, navigation }) => (
-  <ScrollView style={styles.card}>
-    <TouchableOpacity onPress={() => navigation.navigate("Task Details")}>
-      <TasksDetailsBox
-        project={project}
-        taskTitle={taskTitle}
-        author={author}
-        status={status}
-      ></TasksDetailsBox>
-      <View style={styles.detailsBox}>
-        <View style={styles.boxTitle}>
-          <Text style={(styles.title, styles.progress)}>55%</Text>
+const Item = ({ project, taskTitle, author, status, navigation, advancement, endingTime }) => {
+  const parsingDate = format(new Date(+endingTime), 'P')
+
+  return (
+    <ScrollView style={styles.card}>
+      <TouchableOpacity onPress={() => navigation.navigate("Task Details")}>
+        <TasksDetailsBox
+          project={project}
+          taskTitle={taskTitle}
+          author={author}
+          status={status}
+        ></TasksDetailsBox>
+        <View style={styles.detailsBox}>
+          <View style={styles.boxTitle}>
+            <Text style={(styles.title, styles.progress)}>{advancement}%</Text>
+          </View>
+          <View style={styles.boxTitle}>
+            <Text style={(styles.title, styles.date)}>{parsingDate}</Text>
+          </View>
         </View>
-        <View style={styles.boxTitle}>
-          <Text style={(styles.title, styles.date)}>11/11/11</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
-  </ScrollView>
-);
+      </TouchableOpacity>
+    </ScrollView>
+  );
+}
+
 
 export default function TasksScreen({ navigation }) {
 
@@ -49,9 +55,10 @@ export default function TasksScreen({ navigation }) {
 
   const { data, error } = useQuery(GET_TASKS)
 
+  console.log(data)
   useEffect(() => {
     setTasks(data.getTasks)
-  }, [data]);
+  }, []);
 
   const renderItem = ({ item }) => (
     <Item
@@ -59,6 +66,8 @@ export default function TasksScreen({ navigation }) {
       taskTitle={item.title}
       author={item.taskCreator.username}
       status={item.status}
+      advancement={item.advancement}
+      endingTime={item.ending_time}
       navigation={navigation}
     />
   );
