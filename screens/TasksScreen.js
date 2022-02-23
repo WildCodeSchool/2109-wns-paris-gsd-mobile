@@ -123,11 +123,11 @@ const styles = StyleSheet.create({
     fontSize: theme.FONT_SIZE_M,
   },
   progress: {
-    color: theme.SIXTH_COLOR,
+    color: theme.BLUE,
     ...textUppercase,
   },
   date: {
-    color: theme.FIFTH_COLOR,
+    color: theme.GREEN,
     ...textUppercase,
   },
 });
