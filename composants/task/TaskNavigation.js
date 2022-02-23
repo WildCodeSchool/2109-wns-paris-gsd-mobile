@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import {margin} from '../../style/common.style'
+import { textUppercase } from "../../style/common.style";
+import themeStyle from "../../style/theme.style";
+
 import Ionicons from "@expo/vector-icons/Ionicons";
 export default function TaskNavigation({ navigation }) {
   return (
@@ -13,42 +17,19 @@ export default function TaskNavigation({ navigation }) {
           <Ionicons name={"arrow-back-circle-outline"} size={35} />
         </View>
       </TouchableHighlight>
-      <View style={styles.projectNav}>
-        <Text style={styles.titleProject}>Project</Text>
-      </View>
+      <Text style={styles.title}>PROCTOFRANCE</Text>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  projectNav: {
-    width: 300,
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
-    backgroundColor: "#EA3358",
-    marginRight: 0,
-  },
-  titleProject: {
-    color: "white",
-    padding: 15,
-    fontSize: 20,
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    textShadowColor: "black",
-    textShadowRadius: -1,
-    textShadowOffset: { width: -1, height: 2 },
-  },
   iconArrowBackBox: {
-    marginRight: "auto",
-    marginLeft: "auto",
+    ...margin,
   },
-  iconArrowBack: {
-    marginTop: "auto",
-    marginBottom: "auto",
+  title: {
+    ...textUppercase,
+    fontSize: themeStyle.FONT_SIZE_L,
+    color: themeStyle.RED,
   },
 });
