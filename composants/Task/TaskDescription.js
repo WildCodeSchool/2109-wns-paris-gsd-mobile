@@ -1,51 +1,48 @@
-import React from 'react';
-import { StyleSheet, ScrollView, Text, StatusBar, SafeAreaView, View, FlatList, Image, TouchableOpacity } from "react-native";
-
-export default function TaskDescription(){
-
-    return(
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-              <View style={styles.card}>
-                  <Text style={styles.title}>Cleaner les logs</Text>
-                  <Text style={styles.text}>Salut Valentaing, Est-ce que tu peux clenaer les logs de merde qui trainent</Text>
-              </View>
-            </ScrollView>
-        </SafeAreaView>
-    );
+import React from "react";
+import {
+  StyleSheet,
+  ScrollView,
+  Text,
+  StatusBar,
+  SafeAreaView,
+  View,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import theme from "../../style/theme.style";
+import {
+  container,
+  cardDetail,
+  titleCard,
+  containerFlexRow,
+  textUppercase,
+  textDescription,
+} from "../../style/common.style";
+export default function TaskDescription() {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.title}>Cleaner les logs</Text>
+      <View style={styles.detailsBox}>
+        <Text style={styles.description}>Salut Valentaing,</Text>
+        <Text style={styles.description}>
+          Est-ce que tu peux clenaer les logs de merde qui trainent
+        </Text>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: StatusBar.currentHeight,
-    },
-    scrollView: {
-      marginHorizontal: 20,
-    },
-    card: {
-      borderColor: 'black',
-      borderRadius: 4,
-      borderBottomWidth: 3,
-      borderLeftWidth: 3,
-      borderTopWidth: 1,
-      borderRightWidth: 1,
-      marginVertical: 8,
-      padding: 20,
-    },
-    title: {
-    fontSize: 25,
-    color: '#F4BF42',
-    textTransform: "uppercase",
-    fontWeight: "bold",
-    letterSpacing: 1.5,
-    paddingBottom: 30,
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: {width: 3, height: 1},
-    textShadowRadius: 2,
+  card: {
+    ...cardDetail,
   },
-    text: {
-      fontSize: 16,
-    },
-  });
-  
+  title: {
+    ...titleCard,
+    color: theme.YELLOW,
+  },
+  description: {
+    ...textDescription,
+    textAlign: "left",
+  },
+});
