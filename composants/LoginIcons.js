@@ -1,6 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
-import { containerFlexRow, marginAutoRL, iconStar } from "../style/common.style";
+import {
+  containerFlexRow,
+  marginAutoRL,
+  iconStar,
+} from "../style/common.style";
 
 export default function LoginIcons() {
   return (
@@ -13,7 +17,7 @@ export default function LoginIcons() {
         style={styles.iconCenter}
         source={require("../assets/star_red.png")}
       />
-      <Image style={styles.icon} source={require("../assets/star_pink.png")} />
+      <Image style={styles.icon} source={require("../assets/star_blue.png")} />
     </View>
   );
 }
