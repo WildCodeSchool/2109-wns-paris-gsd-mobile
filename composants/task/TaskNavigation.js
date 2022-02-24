@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
-import {margin} from '../../style/common.style'
+import { margin } from '../../style/common.style'
 import { textUppercase } from "../../style/common.style";
 import theme from "../../style/theme.style";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-export default function TaskNavigation({ navigation }) {
+export default function TaskNavigation({ navigation, title }) {
   return (
     <View style={styles.container}>
       <TouchableHighlight
@@ -17,7 +17,7 @@ export default function TaskNavigation({ navigation }) {
           <Ionicons name={"arrow-back-circle-outline"} size={35} />
         </View>
       </TouchableHighlight>
-      <Text style={styles.title}>PROCTOFRANCE</Text>
+      <Text style={styles.title}>{title}</Text>
 
     </View>
   );

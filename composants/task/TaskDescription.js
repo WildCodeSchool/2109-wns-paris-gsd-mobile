@@ -19,14 +19,13 @@ import {
   textUppercase,
   textDescription,
 } from "../../style/common.style";
-export default function TaskDescription() {
+export default function TaskDescription({ data }) {
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>Cleaner les logs</Text>
+      <Text style={styles.title}>{data.title}</Text>
       <View style={styles.detailsBox}>
-        <Text style={styles.description}>Salut Valentaing,</Text>
         <Text style={styles.description}>
-          Est-ce que tu peux clenaer les logs de merde qui trainent
+          {data.description}
         </Text>
       </View>
     </View>

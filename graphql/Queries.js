@@ -96,3 +96,27 @@ export const GET_TASKS_BY_PROJECT_ID = gql`
     }
   }
 `
+
+export const GET_TASK_BY_ID = gql`
+  query GetTaskById($data: TaskIdInput!) {
+    getTaskById(data: $data) {
+      id
+      title
+      description
+      starting_time
+      ending_time
+      advancement
+      status
+      project {
+        id
+        name
+        starting_time
+        ending_time
+      }
+      taskCreator {
+        id
+        username
+      }
+    }
+  }
+`

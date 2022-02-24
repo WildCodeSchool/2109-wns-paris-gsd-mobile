@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import {
@@ -8,7 +9,11 @@ import {
 } from "../../style/common.style";
 import theme from "../../style/theme.style";
 
-export default function TaskDeadline() {
+export default function TaskDeadline({ data }) {
+
+  // const estimeeHours = format(data.starting_time, 'p')
+
+
   return (
     <View style={styles.card}>
       <Text style={styles.title}>DEADLINE</Text>
@@ -23,7 +28,7 @@ export default function TaskDeadline() {
       </View>
       <View style={styles.detailsBox}>
         <Text>Percentage</Text>
-        <Text style={styles.description}>67%</Text>
+        <Text style={styles.description}>{data.advancement}%</Text>
       </View>
     </View>
   );

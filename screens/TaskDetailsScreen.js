@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
+import { StyleSheet, SafeAreaView, ScrollView, View, Text } from "react-native";
 import Logo from "../composants/Logo";
 import { container } from "../style/common.style";
 import TaskNavigation from "../composants/task/TaskNavigation";
@@ -8,21 +8,37 @@ import TaskDescription from "../composants/task/TaskDescription";
 import TaskStatus from "../composants/task/TaskStatus";
 import TaskAssignee from "../composants/task/TaskAssignee";
 import TaskAssets from "../composants/task/TaskAssets";
-export default function TaskDetailsScreen({ navigation }) {
+import { useQuery } from "@apollo/client";
+import { GET_TASK_BY_ID } from "../graphql/Queries";
+export default function TaskDetailsScreen({ route, navigation }) {
+
+  const variables = {
+    data: {
+      taskId: route.params.id
+    }
+  }
+
+  const { loading, data, error } = useQuery(GET_TASK_BY_ID, { variables })
+
+  if (loading) return <Text>Loading...</Text>
+
+  if (error) return <Text>Error</Text>
+
+
   return (
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
       <ScrollView style={styles.card}>
-        <TaskNavigation navigation={navigation} />
+        <TaskNavigation navigation={navigation} title={data.getTaskById.project.name} />
 
         <View style={styles.box}>
-          <TaskDescription />
+          <TaskDescription data={data.getTaskById} />
         </View>
         <View style={styles.box}>
-          <TaskDeadline />
-          <TaskAssignee/>
+          <TaskDeadline data={data.getTaskById} />
+          <TaskAssignee />
           <TaskStatus />
-          <TaskAssets/>
+          <TaskAssets />
         </View>
       </ScrollView>
     </SafeAreaView>

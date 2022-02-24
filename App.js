@@ -65,6 +65,7 @@ export default function App() {
             name="Task Details"
             component={TaskDetailsScreen}
             options={{ headerShown: false }}
+            getId={({ params }) => params.taskId}
           />
         </Stack.Navigator>
       </NavigationContainer>

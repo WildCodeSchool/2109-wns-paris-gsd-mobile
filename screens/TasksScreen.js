@@ -28,18 +28,18 @@ import theme from "../style/theme.style";
 import { useQuery } from "@apollo/client";
 import { GET_TASKS } from "../graphql/Queries";
 
-const Item = ({ project, taskTitle, author, status, navigation, advancement, endingTime }) => {
+const Item = ({ taskId, project, taskTitle, author, status, navigation, advancement, endingTime }) => {
   const parsingDate = format(new Date(+endingTime), 'P', { locale: fr })
 
   return (
     <ScrollView style={styles.card}>
-      <TouchableOpacity onPress={() => navigation.navigate("Task Details")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Task Details", { id: taskId })}>
         <TasksDetailsBox
           project={project}
           taskTitle={taskTitle}
           author={author}
           status={status}
-        ></TasksDetailsBox>
+        />
         <View style={styles.detailsBox}>
           <View style={styles.boxTitle}>
             <Text style={(styles.title, styles.progress)}>{advancement}%</Text>
@@ -49,14 +49,14 @@ const Item = ({ project, taskTitle, author, status, navigation, advancement, end
           </View>
         </View>
       </TouchableOpacity>
-    </ScrollView>
+    </ScrollView >
   );
 }
 
 
 export default function TasksScreen({ navigation }) {
 
-  const [tasks, setTasks] = useState()
+  const [tasks, setTasks] = useState([])
 
   const { loading, data, error } = useQuery(GET_TASKS)
 
@@ -64,7 +64,7 @@ export default function TasksScreen({ navigation }) {
     if (loading) {
       console.log('here')
       // TODO un composant LOADING ?
-    } else {
+    } else if (data) {
       setTasks(data.getTasks)
     }
 
@@ -72,6 +72,7 @@ export default function TasksScreen({ navigation }) {
 
   const renderItem = ({ item }) => (
     <Item
+      taskId={item.id}
       project={item.project.name}
       taskTitle={item.title}
       author={item.taskCreator.username}
@@ -86,7 +87,7 @@ export default function TasksScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
       <TasksSelect
-        data={[]}
+        data={["prout", "prout"]}
         buttonStyle={styles.button}
         buttonTextStyle={styles.text}
         defaultButtonText="All Projects"
