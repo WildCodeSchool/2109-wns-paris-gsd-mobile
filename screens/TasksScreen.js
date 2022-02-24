@@ -64,6 +64,7 @@ const tasks = [
     status: "pending",
   },
 ];
+const projects = ["Project 1", "New Project", "Project FB", "Project 3"];
 
 const Item = ({ project, taskTitle, author, status, navigation }) => (
   <ScrollView style={styles.card}>
@@ -99,6 +100,7 @@ export default function TasksScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
       <TasksSelect
+        data={projects}
         buttonStyle={styles.button}
         buttonTextStyle={styles.text}
         defaultButtonText="All Projects"

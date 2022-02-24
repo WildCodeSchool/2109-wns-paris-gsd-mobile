@@ -8,12 +8,11 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import SelectDropdown from "react-native-select-dropdown";
-const projects = ["Project 1", "New Project", "Project FB", "Project 3"];
-export default function TasksSelect({ buttonStyle, defaultButtonText, buttonTextStyle }) {
+export default function TasksSelect({data, buttonStyle, defaultButtonText, buttonTextStyle }) {
   return (
     <View style={styles.container}>
       <SelectDropdown
-        data={projects}
+        data={data}
         onSelect={(selectedItem, index) => {
           //   console.log(selectedItem, index);
         }}
