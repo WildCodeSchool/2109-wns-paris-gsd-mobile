@@ -6,6 +6,8 @@ import TaskNavigation from "../composants/task/TaskNavigation";
 import TaskDeadline from "../composants/task/TaskDeadline";
 import TaskDescription from "../composants/task/TaskDescription";
 import TaskStatus from "../composants/task/TaskStatus";
+import TaskAssignee from "../composants/task/TaskAssignee";
+import TaskAssets from "../composants/task/TaskAssets";
 export default function TaskDetailsScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
@@ -18,7 +20,9 @@ export default function TaskDetailsScreen({ navigation }) {
         </View>
         <View style={styles.box}>
           <TaskDeadline />
+          <TaskAssignee/>
           <TaskStatus />
+          <TaskAssets/>
         </View>
       </ScrollView>
     </SafeAreaView>
