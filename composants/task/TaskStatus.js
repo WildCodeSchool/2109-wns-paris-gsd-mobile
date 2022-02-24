@@ -19,6 +19,7 @@ export default function TaskStatus() {
       <View style={styles.detailsBox}>
         <Text style={styles.title}>Status</Text>
         <TasksSelect
+          data={[]}
           buttonStyle={[styles.button, styles.buttonSelect]}
           defaultButtonText=""
           buttonTextStyle={styles.text}
@@ -26,7 +27,7 @@ export default function TaskStatus() {
       </View>
       <View style={styles.detailsBox}>
         <Text style={[styles.title, styles.titleBlue]}>%</Text>
-        <TasksSelect buttonStyle={styles.button} defaultButtonText="%" />
+        <TasksSelect data={[]} buttonStyle={styles.button} defaultButtonText="%" />
       </View>
       <View style={styles.detailsBox}>
         <Text style={[styles.title, styles.titleBlue]}>Time</Text>
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     marginTop: "auto",
     marginBottom: "auto",
   },
-  titleBlue:{
-      color: theme.BLUE
+  titleBlue: {
+    color: theme.BLUE
   }
 });

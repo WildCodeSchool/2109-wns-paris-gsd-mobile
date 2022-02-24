@@ -86,6 +86,7 @@ export default function TasksScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
       <TasksSelect
+      data={[]}
         buttonStyle={styles.button}
         buttonTextStyle={styles.text}
         defaultButtonText="All Projects"

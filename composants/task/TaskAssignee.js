@@ -14,6 +14,7 @@ export default function TaskAssignee() {
     <View style={styles.detailsBox}>
       <Text style={styles.title}>Assignee</Text>
       <TasksSelect
+        data={[]}
         buttonStyle={styles.buttonSelect}
         defaultButtonText=""
         buttonTextStyle={styles.text}
