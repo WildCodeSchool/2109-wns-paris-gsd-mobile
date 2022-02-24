@@ -15,9 +15,14 @@ import {
   containerFlexRow,
   textUppercase,
   textDescription,
+  buttonFilter,
+  textButton,
 } from "../style/common.style";
 import Logo from "../composants/Logo";
 import TasksDetailsBox from "../composants/tasks/TasksDetailsBox";
+import TasksFilterButton from "../composants/tasks/TasksFilterButton";
+import TasksSelect from "../composants/tasks/TasksSelect";
+
 import theme from "../style/theme.style";
 import { useQuery } from "@apollo/client";
 import { GET_TASKS } from "../graphql/Queries";
@@ -75,6 +80,12 @@ export default function TasksScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
+      <TasksSelect
+        buttonStyle={styles.button}
+        buttonTextStyle={styles.text}
+        defaultButtonText="All Projects"
+      />
+      <TasksFilterButton />
       <FlatList
         data={tasks}
         renderItem={renderItem}
@@ -111,5 +122,13 @@ const styles = StyleSheet.create({
   date: {
     color: theme.GREEN,
     ...textUppercase,
+  },
+  button: {
+    ...buttonFilter,
+    width: "100%",
+    padding: 10,
+  },
+  text: {
+    ...textButton,
   },
 });

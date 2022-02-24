@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
-import { containerFlexRow, marginAuto, iconStar } from "../style/common.style";
+import { containerFlexRow, marginAutoRL, iconStar } from "../style/common.style";
 
 export default function LoginIcons() {
   return (
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     width: 300,
     position: "absolute",
     bottom: 90,
-    ...marginAuto,
+    ...marginAutoRL,
   },
   icon: {
     ...iconStar,

@@ -29,6 +29,10 @@ export const card = {
   borderRightWidth: 1,
   marginVertical: 8,
 };
+export const cardDetail = {
+  ...card,
+  padding: 35,
+};
 
 export const headingText = {
   fontSize: theme.FONT_SIZE_M,
@@ -47,16 +51,20 @@ export const inputView = {
   width: 250,
   alignItems: "center",
   justifyContent: "center",
+  textAlign: "center",
   borderColor: "black",
   borderWidth: 1,
   marginBottom: 20,
 };
+export const inputSelect = {
+  ...card,
+  width: 60,
+  height: 60,
+  textAlign: "center",
+};
 export const textUppercase = {
   fontWeight: "bold",
   textTransform: "uppercase",
-  textShadowColor: "black",
-  textShadowRadius: -1,
-  textShadowOffset: { width: -1, height: 2 },
   textAlign: "center",
   fontFamily: theme.FONT_FAMILY,
   fontSize: theme.FONT_SIZE_M,
@@ -64,12 +72,34 @@ export const textUppercase = {
 export const textDescription = {
   textAlign: "center",
   fontSize: theme.FONT_SIZE_XS,
+  marginBottom: 15,
+  marginTop: 5,
 };
-export const marginAuto = {
+export const titleCard = {
+  ...textUppercase,
+  textAlign: "left",
+  marginBottom: 20,
+};
+export const marginAutoRL = {
   marginRight: "auto",
   marginLeft: "auto",
 };
+export const marginAutoTB = {
+  marginTop: "auto",
+  marginBottom: "auto",
+};
+
 export const iconStar = {
   width: 30,
   height: 30,
+};
+export const buttonFilter = {
+  ...card,
+  padding: 15,
+  width: 170,
+};
+export const textButton = {
+  ...textUppercase,
+  fontSize: theme.FONT_SIZE_S,
+  // textShadowColor: "transparent",
 };

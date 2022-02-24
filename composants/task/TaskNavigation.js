@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 import {margin} from '../../style/common.style'
 import { textUppercase } from "../../style/common.style";
-import themeStyle from "../../style/theme.style";
+import theme from "../../style/theme.style";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 export default function TaskNavigation({ navigation }) {
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   title: {
     ...textUppercase,
-    fontSize: themeStyle.FONT_SIZE_L,
-    color: themeStyle.RED,
+    fontSize: theme.FONT_SIZE_L,
+    color: theme.RED,
   },
 });

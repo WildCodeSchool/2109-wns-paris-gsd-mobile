@@ -1,26 +1,47 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { card, textUppercase } from "../../style/common.style";
-import themeStyle from "../../style/theme.style";
+import {
+  cardDetail,
+  titleCard,
+  textDescription,
+  containerFlexRow,
+} from "../../style/common.style";
+import theme from "../../style/theme.style";
 
 export default function TaskDeadline() {
   return (
-      <View style={style.card}>
-        <Text style={style.title}>DEADLINE</Text>
+    <View style={styles.card}>
+      <Text style={styles.title}>DEADLINE</Text>
+
+      <View style={styles.detailsBox}>
         <Text>Estimee</Text>
-        <Text>Time Spent</Text>
-        <Text>Percentage</Text>
+        <Text style={styles.description}>6 hours</Text>
       </View>
+      <View style={styles.detailsBox}>
+        <Text>Time Spent</Text>
+        <Text style={styles.description}>4 hours</Text>
+      </View>
+      <View style={styles.detailsBox}>
+        <Text>Percentage</Text>
+        <Text style={styles.description}>67%</Text>
+      </View>
+    </View>
   );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   card: {
-    ...card,
+    ...cardDetail,
   },
   title: {
-    ...textUppercase,
-    fontSize: themeStyle.FONT_SIZE_M,
-    color: themeStyle.GREEN,
+    ...titleCard,
+    color: theme.GREEN,
+  },
+  description: {
+    ...textDescription,
+    textAlign: "left",
+  },
+  detailsBox: {
+    ...containerFlexRow,
   },
 });
