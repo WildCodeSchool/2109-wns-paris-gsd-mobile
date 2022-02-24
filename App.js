@@ -6,12 +6,10 @@ import LoginScreen from "./screens/LoginScreen";
 import TasksScreen from "./screens/TasksScreen";
 import NotificationsScreen from "./screens/NotificationsScreen";
 import TaskDetailsScreen from "./screens/TaskDetailsScreen";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ApolloProvider } from '@apollo/client';
 import { client } from "./graphql/Client";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Stack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
