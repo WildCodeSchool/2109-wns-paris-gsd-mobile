@@ -2,6 +2,7 @@ export default {
     YELLOW: '#F4BF42',
     RED: '#EA3358',
     PINK: '#EF89C3',
+    ORANGE: '#F48242',
     LIGHT_BLUE: '#5DAFFA',
     GREEN: '#21AB38',
     BLUE: '#4269F4',

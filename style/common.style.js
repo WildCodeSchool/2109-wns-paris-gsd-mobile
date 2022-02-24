@@ -80,10 +80,15 @@ export const titleCard = {
   textAlign: "left",
   marginBottom: 20,
 };
-export const marginAuto = {
+export const marginAutoRL = {
   marginRight: "auto",
   marginLeft: "auto",
 };
+export const marginAutoTB = {
+  marginTop: "auto",
+  marginBottom: "auto",
+};
+
 export const iconStar = {
   width: 30,
   height: 30,
