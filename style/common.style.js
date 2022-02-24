@@ -33,7 +33,6 @@ export const cardDetail = {
   ...card,
   padding: 35,
 };
-
 export const headingText = {
   fontSize: theme.FONT_SIZE_M,
   alignSelf: "flex-start",
@@ -41,7 +40,6 @@ export const headingText = {
   padding: 10,
   fontWeight: theme.FONT_WEIGHT_BOLD,
 };
-
 export const textInput = {
   color: theme.LIGHT_BLUE,
   backgroundColor: theme.BACKGROUND_COLOR_LIGHT,
@@ -58,7 +56,7 @@ export const inputView = {
 };
 export const inputSelect = {
   ...card,
-  width: 60,
+  width: 100,
   height: 60,
   textAlign: "center",
 };
@@ -88,7 +86,6 @@ export const marginAutoTB = {
   marginTop: "auto",
   marginBottom: "auto",
 };
-
 export const iconStar = {
   width: 30,
   height: 30,
