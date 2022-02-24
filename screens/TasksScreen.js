@@ -29,7 +29,7 @@ import { useQuery } from "@apollo/client";
 import { GET_TASKS } from "../graphql/Queries";
 
 const Item = ({ project, taskTitle, author, status, navigation, advancement, endingTime }) => {
-  const parsingDate = format(new Date(+endingTime), 'PP', { locale: fr })
+  const parsingDate = format(new Date(+endingTime), 'P', { locale: fr })
 
   return (
     <ScrollView style={styles.card}>
@@ -86,7 +86,7 @@ export default function TasksScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <Logo onPress={() => navigation.navigate("Login")} />
       <TasksSelect
-      data={[]}
+        data={[]}
         buttonStyle={styles.button}
         buttonTextStyle={styles.text}
         defaultButtonText="All Projects"
@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
   date: {
     color: theme.GREEN,
     ...textUppercase,
+    fontSize: 20
   },
   button: {
     ...buttonFilter,
