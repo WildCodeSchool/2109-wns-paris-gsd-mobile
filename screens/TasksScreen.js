@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import format from 'date-fns/format'
+import { fr } from 'date-fns/locale'
 import {
   StyleSheet,
   Text,
@@ -27,9 +28,8 @@ import theme from "../style/theme.style";
 import { useQuery } from "@apollo/client";
 import { GET_TASKS } from "../graphql/Queries";
 
-
 const Item = ({ project, taskTitle, author, status, navigation, advancement, endingTime }) => {
-  const parsingDate = format(new Date(+endingTime), 'P')
+  const parsingDate = format(new Date(+endingTime), 'PP', { locale: fr })
 
   return (
     <ScrollView style={styles.card}>
@@ -58,12 +58,17 @@ export default function TasksScreen({ navigation }) {
 
   const [tasks, setTasks] = useState()
 
-  const { data, error } = useQuery(GET_TASKS)
+  const { loading, data, error } = useQuery(GET_TASKS)
 
-  console.log(data)
   useEffect(() => {
-    setTasks(data.getTasks)
-  }, []);
+    if (loading) {
+      console.log('here')
+      // TODO un composant LOADING ?
+    } else {
+      setTasks(data.getTasks)
+    }
+
+  }, [data]);
 
   const renderItem = ({ item }) => (
     <Item
