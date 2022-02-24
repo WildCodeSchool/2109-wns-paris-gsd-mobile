@@ -19,8 +19,6 @@ export default function TaskDetailsScreen({ navigation }) {
         <TaskNavigation navigation={navigation} />
         <View style={styles.box}>
           <TaskDescription />
-        </View>
-        <View style={styles.box}>
           <TaskDeadline />
           <TaskAssignee />
           <TaskStatus />
@@ -39,5 +37,8 @@ const styles = StyleSheet.create({
   },
   card: {
     padding: 20,
+  },
+  box: {
+    marginBottom: 30,
   },
 });

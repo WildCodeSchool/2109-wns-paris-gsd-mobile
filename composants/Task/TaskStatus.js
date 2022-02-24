@@ -21,7 +21,7 @@ export default function TaskStatus() {
         <TasksSelect
           data={percentage}
           buttonStyle={[styles.button, styles.buttonSelect]}
-          defaultButtonText=""
+          defaultButtonText="Status"
           buttonTextStyle={styles.text}
         />
       </View>
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   },
   button: {
     ...inputSelect,
+    // width: 80,
   },
   buttonSelect: {
     ...inputSelect,
