@@ -70,9 +70,7 @@ export default function TasksScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
   const [token, setToken] = useState();
 
-  const [getTasks, { loading, data, error }] = useLazyQuery(GET_TASKS, {
-    context: { headers: { Cookie: `token=${token}` } },
-  });
+  const [getTasks, { loading, data, error }] = useLazyQuery(GET_TASKS);
 
   useEffect(() => {
     if (loading) {
