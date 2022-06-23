@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import format from 'date-fns/format'
-import { fr } from 'date-fns/locale'
+import format from "date-fns/format";
+import { fr } from "date-fns/locale";
 import {
   StyleSheet,
   Text,
@@ -23,17 +23,30 @@ import Logo from "../composants/Logo";
 import TasksDetailsBox from "../composants/tasks/TasksDetailsBox";
 import TasksFilterButton from "../composants/tasks/TasksFilterButton";
 import TasksSelect from "../composants/tasks/TasksSelect";
+import * as SecureStore from "expo-secure-store";
 
 import theme from "../style/theme.style";
+import { useLazyQuery } from "@apollo/client";
 import { useQuery } from "@apollo/client";
 import { GET_TASKS } from "../graphql/Queries";
 
-const Item = ({ taskId, project, taskTitle, author, status, navigation, advancement, endingTime }) => {
-  const parsingDate = format(new Date(+endingTime), 'P', { locale: fr })
+const Item = ({
+  taskId,
+  project,
+  taskTitle,
+  author,
+  status,
+  navigation,
+  advancement,
+  endingTime,
+}) => {
+  const parsingDate = format(new Date(+endingTime), "P", { locale: fr });
 
   return (
     <ScrollView style={styles.card}>
-      <TouchableOpacity onPress={() => navigation.navigate("Task Details", { id: taskId })}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Task Details", { id: taskId })}
+      >
         <TasksDetailsBox
           project={project}
           taskTitle={taskTitle}
@@ -49,26 +62,36 @@ const Item = ({ taskId, project, taskTitle, author, status, navigation, advancem
           </View>
         </View>
       </TouchableOpacity>
-    </ScrollView >
+    </ScrollView>
   );
-}
-
+};
 
 export default function TasksScreen({ navigation }) {
+  const [tasks, setTasks] = useState([]);
+  const [token, setToken] = useState();
 
-  const [tasks, setTasks] = useState([])
-
-  const { loading, data, error } = useQuery(GET_TASKS)
+  const [getTasks, { loading, data, error }] = useLazyQuery(GET_TASKS, {
+    context: { headers: { Cookie: `token=${token}` } },
+  });
 
   useEffect(() => {
     if (loading) {
-      console.log('here')
+      console.log("no data");
       // TODO un composant LOADING ?
     } else if (data) {
-      setTasks(data.getTasks)
+      setTasks(data.getTasks);
+    } else if (error) {
+      console.log(error);
     }
+  }, [data, error]);
 
-  }, [data]);
+  useEffect(() => {
+    SecureStore.getItemAsync("token").then((res) => {
+      setToken(res);
+    });
+
+    getTasks();
+  }, []);
 
   const renderItem = ({ item }) => (
     <Item
@@ -129,7 +152,7 @@ const styles = StyleSheet.create({
   date: {
     color: theme.GREEN,
     ...textUppercase,
-    fontSize: 20
+    fontSize: 20,
   },
   button: {
     ...buttonFilter,

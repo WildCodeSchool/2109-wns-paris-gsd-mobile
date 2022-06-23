@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,11 +7,47 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { useLazyQuery } from "@apollo/client";
+import * as SecureStore from "expo-secure-store";
 
 import { containerFlexCenter, inputView } from "../style/common.style";
 import LoginIcons from "../composants/LoginIcons";
+import { LOGIN_USER } from "../graphql/Queries";
+
 export default function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  const [loginUser, { loading, data, error }] = useLazyQuery(LOGIN_USER);
+
+  async function save(key, value) {
+    await SecureStore.setItemAsync(key, value);
+  }
+
+  useEffect(() => {
+    if (loading) {
+      console.log("here");
+      // TODO un composant LOADING ?
+    } else if (data) {
+      // console.log(data);
+      // setEmail(data.getTasks);
+    }
+  }, [data]);
+
+  const handleSubmit = async () => {
+    loginUser({ variables: { data: { username, password } } })
+      .then(async (res) => {
+        // console.log(res);
+        await save("token", res.data.loginUser.token);
+        navigation.navigate("Tasks");
+
+        // login(res.data.loginUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imgContainer}>
@@ -21,14 +57,28 @@ export default function LoginScreen({ navigation }) {
         />
       </View>
       <View style={styles.inputView}>
-        <TextInput style={styles.textInput} placeholder="email@company.com" />
+        <TextInput
+          style={styles.textInput}
+          placeholder="email@company.com"
+          onChangeText={setUsername}
+        />
       </View>
       <View style={styles.inputView}>
-        <TextInput style={styles.textInput} placeholder="password" />
+        <TextInput
+          style={styles.textInput}
+          secureTextEntry={true}
+          placeholder="password"
+          onChangeText={setPassword}
+        />
       </View>
       <TouchableOpacity
         style={styles.loginBtn}
-        onPress={() => navigation.navigate("Tasks")}
+        onPress={
+          async () => {
+            await handleSubmit();
+          }
+          // navigation.navigate("Tasks")
+        }
       >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
