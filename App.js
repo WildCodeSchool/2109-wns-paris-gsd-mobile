@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -6,9 +6,10 @@ import LoginScreen from "./screens/LoginScreen";
 import TasksScreen from "./screens/TasksScreen";
 import NotificationsScreen from "./screens/NotificationsScreen";
 import TaskDetailsScreen from "./screens/TaskDetailsScreen";
-import { ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from "@apollo/client";
 import { client } from "./graphql/Client";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import * as SecureStore from "expo-secure-store";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -47,6 +48,15 @@ function HomeTabs() {
 }
 
 export default function App() {
+  const emptyStore = async () => {
+    await SecureStore.deleteItemAsync("token");
+  };
+
+  useEffect(() => {
+    emptyStore();
+    console.log("store now clean");
+  }, []);
+
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
