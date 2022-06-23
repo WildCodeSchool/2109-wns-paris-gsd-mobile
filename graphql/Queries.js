@@ -1,14 +1,14 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_TASKS = gql`
   query GetTasks {
     getTasks {
       id
       title
-      project{
+      project {
         name
       }
-      taskCreator{
+      taskCreator {
         username
       }
       advancement
@@ -19,7 +19,7 @@ export const GET_TASKS = gql`
       ending_time
     }
   }
-`
+`;
 
 export const GET_PROJECTS = gql`
   query GetProjects {
@@ -51,7 +51,7 @@ export const GET_PROJECTS = gql`
       }
     }
   }
-`
+`;
 
 export const GET_PROJECT_BY_ID = gql`
   query GetProjectById {
@@ -72,7 +72,7 @@ export const GET_PROJECT_BY_ID = gql`
       }
     }
   }
-`
+`;
 
 export const GET_TASKS_BY_PROJECT_ID = gql`
   query GetTasksByProjectId($data: AllTaskByProjectIdInput!) {
@@ -95,7 +95,7 @@ export const GET_TASKS_BY_PROJECT_ID = gql`
       }
     }
   }
-`
+`;
 
 export const GET_TASK_BY_ID = gql`
   query GetTaskById($data: TaskIdInput!) {
@@ -119,4 +119,16 @@ export const GET_TASK_BY_ID = gql`
       }
     }
   }
-`
+`;
+
+export const LOGIN_USER = gql`
+  query LoginUser($data: LoginInput!) {
+    loginUser(data: $data) {
+      username
+      role
+      userId
+      isConnected
+      token
+    }
+  }
+`;
