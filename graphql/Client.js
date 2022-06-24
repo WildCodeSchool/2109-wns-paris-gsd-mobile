@@ -6,9 +6,19 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import * as SecureStore from "expo-secure-store";
+import Constants from "expo-constants";
+
+const { manifest } = Constants;
+
+const api =
+  typeof manifest?.packagerOpts === `object` && manifest?.packagerOpts.dev
+    ? manifest?.debuggerHost?.split(`:`)?.shift()?.concat(`:8000`)
+    : `api.example.com`;
+
+console.log(api)
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:8000/graphql",
+  uri: `http://${api}/graphql`,
 });
 
 async function getValueFor(key) {
